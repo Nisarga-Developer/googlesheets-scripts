@@ -1,0 +1,18 @@
+function doGet(e) {
+  return ManageSheet(e);
+}
+function doPost(e) {
+  return ManageSheet(e);
+}
+
+function ManageSheet(e) {
+
+    if ( e.parameter.func == "ReadRecord") {
+    var ss = SpreadsheetApp.getActive();
+    var sh = ss.getSheets()[0];
+    var rg = sh.getDataRange().getValues();
+    var outString = '';
+    outString += rg[parseInt(e.parameter.id)].join('**');
+    return ContentService.createTextOutput(outString).setMimeType(ContentService.MimeType.TEXT);
+  } 
+}

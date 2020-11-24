@@ -1,0 +1,24 @@
+function doGet(e) { 
+
+var ss = SpreadsheetApp.openByUrl("Your Sheet Url");
+var sheet = ss.getSheetByName("Sheet1");
+
+
+  
+  addUser(e,sheet);
+}
+
+function doPost(e) { 
+  var ss = SpreadsheetApp.openByUrl("Your Sheet Url");
+  var sheet = ss.getSheetByName("Sheet1"); 
+  
+  addUser(e,sheet);
+}
+
+
+function addUser(e,sheet) {
+  var Name= e.parameter.Name ; 
+  var Gmail= e.parameter.Gmail ;
+
+  sheet.appendRow([Name,Gmail]);
+}
